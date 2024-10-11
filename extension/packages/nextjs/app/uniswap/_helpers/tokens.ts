@@ -1,7 +1,7 @@
 import { WETH9 } from "./WETH9";
 import { Token } from "@uniswap/sdk-core";
 import { Address } from "viem";
-import { arbitrum, hardhat, mainnet, optimism } from "viem/chains";
+import { arbitrum, base, hardhat, mainnet, optimism, polygon } from "viem/chains";
 
 const MAINNET_ADDRESSES = {
   [WETH9[mainnet.id].address]: { name: "ETH", decimals: 18 },
@@ -18,11 +18,21 @@ export const TOKEN_ADDRESSES: { [chainId: number]: { [address: string]: { name: 
     "0xaf88d065e77c8cC2239327C5EDb3A432268e5831": { name: "USDC", decimals: 6 },
     "0x912CE59144191C1204E64559FE8253a0e49E6548": { name: "ARB", decimals: 18 },
   },
+  [base.id]: {
+    [WETH9[base.id].address]: { name: "ETH", decimals: 18 },
+    "0x50c5725949A6F0c72E6C4a641F24049A917DB0Cb": { name: "DAI", decimals: 18 },
+    "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913": { name: "USDC", decimals: 6 },
+  },
   [optimism.id]: {
     [WETH9[optimism.id].address]: { name: "ETH", decimals: 18 },
     "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1": { name: "DAI", decimals: 18 },
-    "0x7F5c764cBc14f9669B88837ca1490cCa17c31607": { name: "USDC", decimals: 6 },
+    "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85": { name: "USDC", decimals: 6 },
     "0x4200000000000000000000000000000000000042": { name: "OP", decimals: 18 },
+  },
+  [polygon.id]: {
+    [WETH9[polygon.id].address]: { name: "MATIC", decimals: 18 },
+    "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063": { name: "DAI", decimals: 18 },
+    "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359": { name: "USDC", decimals: 6 },
   },
 };
 
