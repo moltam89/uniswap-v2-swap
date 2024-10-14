@@ -10,6 +10,7 @@ npx create-eth@latest -e moltam89/uniswap-v2-swap
 ```
 
 ## 🚀 Setup extension
+If you chose Hardhat during installation, you'll need to specify a forking URL. See this [PR](https://github.com/scaffold-eth/scaffold-eth-2/pull/964/files) for instructions on how to set it up.
 
 ```
 yarn fork
