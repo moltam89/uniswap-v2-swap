@@ -15,7 +15,7 @@ import {
 import { TokenPanel } from "./TokenPanel";
 import { Percent, Token, TradeType } from "@uniswap/sdk-core";
 import { Trade } from "@uniswap/v2-sdk";
-import { Hash, erc20Abi, maxUint256, parseEther, parseUnits, zeroAddress } from "viem";
+import { Hash, erc20Abi, maxUint256, parseUnits, zeroAddress } from "viem";
 import { useAccount, useChainId, useReadContract, useWriteContract } from "wagmi";
 import {
   useScaffoldContract,
@@ -114,7 +114,7 @@ export const V2Swap = () => {
   return (
     <div className="flex flex-col justify-center items-center bg-base-300 w-full mt-8 px-8 pt-6 pb-12">
       <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center w-full md:w-2/4 rounded-3xl mt-10">
-        <h3 className="text-2xl font-bold">Swap Tokens {chainId}</h3>
+        <h3 className="text-2xl font-bold">Swap Tokens</h3>
 
         <TokenPanel
           token={tokenA}
@@ -163,31 +163,19 @@ export const V2Swap = () => {
                   swapResult = await writeUniswapV2Router02Async({
                     functionName: "swapExactETHForTokens",
                     args: [parseUnits(amountOutMin, tokenB.decimals), path, to, BigInt(deadline)],
-                    value: parseEther(amount),
+                    value: parsedAmount,
                   });
                 } else if (tokenB.address === WETH9[chainId].address) {
                   // Swap tokens for ETH
                   swapResult = await writeUniswapV2Router02Async({
                     functionName: "swapExactTokensForETH",
-                    args: [
-                      parseUnits(amount, tokenA.decimals),
-                      parseUnits(amountOutMin, tokenB.decimals),
-                      path,
-                      to,
-                      BigInt(deadline),
-                    ],
+                    args: [parsedAmount, parseUnits(amountOutMin, tokenB.decimals), path, to, BigInt(deadline)],
                   });
                 } else {
                   // Swap tokens for tokens
                   swapResult = await writeUniswapV2Router02Async({
                     functionName: "swapExactTokensForTokens",
-                    args: [
-                      parseUnits(amount, tokenA.decimals),
-                      parseUnits(amountOutMin, tokenB.decimals),
-                      path,
-                      to,
-                      BigInt(deadline),
-                    ],
+                    args: [parsedAmount, parseUnits(amountOutMin, tokenB.decimals), path, to, BigInt(deadline)],
                   });
                 }
                 console.log("swapResult", swapResult);
