@@ -27,7 +27,6 @@ export const TOKEN_ADDRESSES: { [chainId: number]: { [address: string]: { name: 
     [WETH9[optimism.id].address]: { name: "ETH", decimals: 18 },
     "0xDA10009cBd5D07dd0CeCc66161FC93D7c9000da1": { name: "DAI", decimals: 18 },
     "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85": { name: "USDC", decimals: 6 },
-    "0x4200000000000000000000000000000000000042": { name: "OP", decimals: 18 },
   },
   [polygon.id]: {
     [WETH9[polygon.id].address]: { name: "MATIC", decimals: 18 },
