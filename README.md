@@ -10,7 +10,9 @@ npx create-eth@latest -e moltam89/uniswap-v2-swap
 ```
 
 ## 🚀 Setup extension
-If you chose Hardhat during installation, you'll need to specify a forking URL. See this [PR](https://github.com/scaffold-eth/scaffold-eth-2/pull/964/files) for instructions on how to set it up.
+For local testing, you'll need to set up a forking URL. This requires an API URL from a provider like Alchemy or Infura to simulate a mainnet environment.  
+**Hardhat**: In packages/hardhat/.env, add your forking URL as follows: `FORKING_URL=https://eth-mainnet.g.alchemy.com/v2/{your_api_key}`  
+**Foundry**: In packages/foundry/Makefile, replace ${FORK_URL} with your API URL: `anvil --fork-url FORKING_URL=https://eth-mainnet.g.alchemy.com/v2/{your_api_key} --chain-id 31337`.
 
 ```
 yarn fork
@@ -27,7 +29,7 @@ Visit your app on: `http://localhost:3000`. You can swap tokens on the `Uniswap`
 
 ### 🛰️ Networks
 
-You can configure the network settings in `packages/nextjs/scaffold.config.ts`. By default, the target network is set to either`[chains.hardhat]` or `[chains.foundry]`.
+You can configure the network settings in `packages/nextjs/scaffold.config.ts`. By default, the target network is set to either `[chains.hardhat]` or `[chains.foundry]`.
 
 If you want to configure multiple networks, it can be set like this:  
 `targetNetworks: [chains.hardhat, chains.mainnet, chains.arbitrum, chains.base, chains.optimism, chains.polygon]`
@@ -35,7 +37,7 @@ If you want to configure multiple networks, it can be set like this:
 ### 🪙 Tokens
 
 You can configure the available tokens for swapping in the `packages/nextjs/app/uniswap/_helpers/tokens.ts` file. Here, you can set the token addresses, names, and decimals for each supported network. 
-By default **DAI** and **USDC** are configured. Here’s an example configuration to include the **OP** token on the Optimism network:
+By default, **DAI** and **USDC** are configured. Here’s an example configuration to include the **OP** token on the Optimism network:
 ```
 [optimism.id]: {
     [WETH9[optimism.id].address]: { name: "ETH", decimals: 18 },
