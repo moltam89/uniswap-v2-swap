@@ -10,10 +10,10 @@ npx create-eth@latest -e moltam89/uniswap-v2-swap
 ```
 
 ## 🚀 Setup extension
-For local testing, you'll need to set up a forking URL. This requires an API URL from a provider like Alchemy or Infura to simulate a mainnet environment.  
+For local testing, you'll need to set up a forking URL. This requires an API URL from a provider like Alchemy or Infura to simulate a mainnet environment.
+<br></br>
 **Hardhat**: In packages/hardhat/.env, add your forking URL as follows: `FORKING_URL=https://eth-mainnet.g.alchemy.com/v2/{your_api_key}`  
 **Foundry**: In packages/foundry/Makefile, replace ${FORK_URL} with your API URL: `anvil --fork-url FORKING_URL=https://eth-mainnet.g.alchemy.com/v2/{your_api_key} --chain-id 31337`.
-
 ```
 yarn fork
 ```
